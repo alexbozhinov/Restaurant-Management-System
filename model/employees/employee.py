@@ -7,6 +7,9 @@ purpose: definition of class employee
 import constants
 import bcrypt
 
+from model.employees.money import Money
+from decimal import Decimal
+
 
 class Employee:
     def __init__(self, name=constants.UNDEFINED_CLASS_FIELD, identification_number=constants.UNDEFINED_CLASS_FIELD):
@@ -14,7 +17,7 @@ class Employee:
         self._identification_number = identification_number
         self._password = constants.UNDEFINED_CLASS_FIELD
         self._username = constants.UNDEFINED_CLASS_FIELD
-        self._salary = constants.UNDEFINED_CLASS_FIELD
+        self._salary = Money()
         self._email = self.__generate_email()
 
     def get_name(self):
@@ -29,6 +32,9 @@ class Employee:
     def get_username(self):
         return self._username
 
+    def get_salary(self):
+        return self._salary
+
     def set_username(self, username):
         self._username = username
 
@@ -36,7 +42,13 @@ class Employee:
         self._password = password
 
     def set_salary(self, salary):
-        self._salary = salary
+        self._salary = Money(salary)
+
+    def update_salary(self, percentage):
+        if percentage > Decimal(0.0) or percentage <= Decimal(100.0):
+            new_salary = (self._salary.get_value() * percentage) / Decimal(100.0) + self._salary.get_value()
+
+        self.set_salary(new_salary)
 
     def hash_password(self):
         # Adding the salt to password
