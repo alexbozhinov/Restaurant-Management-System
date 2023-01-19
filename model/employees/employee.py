@@ -5,6 +5,7 @@ created: 18.01.2023
 purpose: definition of class employee
 """
 import constants
+import bcrypt
 
 
 class Employee:
@@ -24,11 +25,21 @@ class Employee:
     def get_email(self):
         return self._email
 
+    def get_username(self):
+        return self._username
+
     def set_username(self, username):
         self._username = username
 
     def set_password(self, password):
         self._password = password
+
+    def hash_password(self):
+        # Adding the salt to password
+        salt = bcrypt.gensalt()
+        # Hashing the password
+        hashed_password = bcrypt.hashpw(self._password, salt)
+        return hashed_password
 
     def __generate_email(self):
         names = self._name.lower().split()
