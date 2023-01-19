@@ -14,6 +14,7 @@ class Employee:
         self._identification_number = identification_number
         self._password = constants.UNDEFINED_CLASS_FIELD
         self._username = constants.UNDEFINED_CLASS_FIELD
+        self._salary = constants.UNDEFINED_CLASS_FIELD
         self._email = self.__generate_email()
 
     def get_name(self):
@@ -33,6 +34,9 @@ class Employee:
 
     def set_password(self, password):
         self._password = password
+
+    def set_salary(self, salary):
+        self._salary = salary
 
     def hash_password(self):
         # Adding the salt to password

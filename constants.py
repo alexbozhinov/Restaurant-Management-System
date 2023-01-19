@@ -13,3 +13,9 @@ RESTAURANT_NAME = 'Eleven Madison Park'
 
 # short restaurant name
 SHORT_RESTAURANT_NAME = 'emp'
+
+# the current currency used
+CURRENCY = 'BGN'
+
+# undefined money value
+UNDEFINED_MONEY_VALUE = '0.00'
