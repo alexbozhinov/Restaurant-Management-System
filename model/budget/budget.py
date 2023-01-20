@@ -1,7 +1,7 @@
 """
 filename: budget.py
 author: alexbozhinov
-created: 18.01.2023
+created: 20.01.2023
 purpose: definition of class Budget
 """
 import constants
