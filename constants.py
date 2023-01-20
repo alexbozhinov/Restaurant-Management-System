@@ -22,3 +22,6 @@ UNDEFINED_MONEY_VALUE = '0.00'
 
 # define identification number length
 BGN_IDENTIFICATION_NUMBER_LENGTH = 10
+
+# storage sizes - future implementations
+STORAGE_SIZES = (5, 5, 5, 6)  # width, length, height, number of fridges

@@ -22,4 +22,5 @@ class ChefType(enum.Enum):
     FRY_CHEF = 11
     GRILL_CHEF = 12
     BUTCHER_CHEF = 13
+    UNDEFINED = 14
 

@@ -2,19 +2,19 @@
 filename: ingredient_order_manager.py
 author: alexbozhinov
 created: 20.01.2023
-purpose: definition of class IngredientOrderManager
+purpose: definition of class StorageManager
 """
 
 
 class StorageManager:
-    def create_ingredient_order(self):
+    def create_ingredient_query(self):
         pass
 
-    def add_ingredient_order(self):
+    def add_ingredient_query(self):
         pass
 
-    def edit_ingredient_order(self):
+    def edit_ingredient_query(self):
         pass
 
-    def cancel_ingredient_order(self):
+    def cancel_ingredient_query(self):
         pass

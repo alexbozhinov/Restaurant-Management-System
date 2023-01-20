@@ -40,16 +40,16 @@ class Employee:
     def get_salary(self):
         return self._salary
 
-    def set_username(self, username):
+    def set_username(self, username: str):
         self._username = username
 
-    def set_password(self, password):
+    def set_password(self, password: str):
         self._password = password
 
-    def set_salary(self, salary):
+    def set_salary(self, salary: str):
         self._salary = Money(salary)
 
-    def update_salary(self, percentage):
+    def update_salary(self, percentage: float):
         if percentage > Decimal(0.0) or percentage <= Decimal(100.0):
             new_salary = (self._salary.get_value() * percentage) / Decimal(100.0) + self._salary.get_value()
             self.set_salary(new_salary)

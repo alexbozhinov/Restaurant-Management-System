@@ -10,7 +10,7 @@ from model.management.storage_manager import StorageManager
 
 
 class Chef(Employee, StorageManager):
-    def __init__(self, name, identification_number, chef_type=ChefType.CHEF_OWNER):
+    def __init__(self, name: str, identification_number: str, chef_type=ChefType.CHEF_OWNER):
         super().__init__(name, identification_number)
         self._chef_type = chef_type
         self._meals_cocked = 0  # number of finished orders
@@ -30,7 +30,7 @@ class Chef(Employee, StorageManager):
         if self._current_orders > 0:
             self._current_orders -= prepared_orders
 
-    def promote_chef(self, new_chef_type):
+    def promote_chef(self, new_chef_type: ChefType):
         self._chef_type = new_chef_type
 
     def get_chef_type(self):
