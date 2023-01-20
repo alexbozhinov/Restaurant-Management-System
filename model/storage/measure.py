@@ -17,4 +17,6 @@ class Measure(enum.Enum):
     bucket = 5
     package = 6
     piece = 7
-    UNDEFINED = 8
+    bottle = 8
+    glass = 9
+    UNDEFINED = 10

@@ -25,3 +25,12 @@ class Storage:
 
     def get_deliveries(self):
         return self.__deliveries
+
+    def add_ingredients(self):
+        pass
+
+    def use_ingredients(self):
+        pass  # - when cocking
+
+    def throw_garbage(self):
+        pass
