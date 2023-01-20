@@ -2,13 +2,14 @@
 filename: chef.py
 author: alexbozhinov
 created: 19.01.2023
-purpose: definition of class Chef, which inherits Employee
+purpose: definition of class Chef, which inherits Employee and StorageManager
 """
 from model.employees.chef_type import ChefType
 from model.employees.employee import Employee
+from model.management.storage_manager import StorageManager
 
 
-class Chef(Employee):
+class Chef(Employee, StorageManager):
     def __init__(self, name, identification_number, chef_type=ChefType.CHEF_OWNER):
         super().__init__(name, identification_number)
         self._chef_type = chef_type
@@ -44,22 +45,10 @@ class Chef(Employee):
     def get_current_orders(self):
         return self._current_orders
 
-    def create_ingredient_order(self):
-        pass
-
-    def add_ingredient_order(self):
-        pass
-
     def start_next_order(self):
         pass
 
     def finish_order(self):
-        pass
-
-    def edit_ingredient_order(self):
-        pass
-
-    def cancel_ingredient_order(self):
         pass
 
 
