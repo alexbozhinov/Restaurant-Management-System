@@ -2,7 +2,7 @@
 filename: employee_test.py
 author: alexbozhinov
 created: 18.01.2023
-purpose: definition of class employee unittests
+purpose: definition of class Employee unittests
 """
 
 import unittest
