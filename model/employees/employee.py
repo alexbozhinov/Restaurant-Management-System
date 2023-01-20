@@ -2,7 +2,7 @@
 filename: employee.py
 author: alexbozhinov
 created: 18.01.2023
-purpose: definition of class employee
+purpose: definition of class Employee
 """
 import constants
 import bcrypt
@@ -14,7 +14,12 @@ from decimal import Decimal
 class Employee:
     def __init__(self, name=constants.UNDEFINED_CLASS_FIELD, identification_number=constants.UNDEFINED_CLASS_FIELD):
         self._name = name
-        self._identification_number = identification_number
+
+        if len(identification_number) == constants.BGN_IDENTIFICATION_NUMBER_LENGTH:
+            self._identification_number = identification_number
+        else:
+            self._identification_number = constants.UNDEFINED_CLASS_FIELD
+
         self._password = constants.UNDEFINED_CLASS_FIELD
         self._username = constants.UNDEFINED_CLASS_FIELD
         self._salary = Money()
@@ -47,8 +52,7 @@ class Employee:
     def update_salary(self, percentage):
         if percentage > Decimal(0.0) or percentage <= Decimal(100.0):
             new_salary = (self._salary.get_value() * percentage) / Decimal(100.0) + self._salary.get_value()
-
-        self.set_salary(new_salary)
+            self.set_salary(new_salary)
 
     def hash_password(self):
         # Adding the salt to password

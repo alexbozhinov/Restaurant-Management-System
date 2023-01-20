@@ -19,3 +19,6 @@ CURRENCY = 'BGN'
 
 # undefined money value
 UNDEFINED_MONEY_VALUE = '0.00'
+
+# define identification number length
+BGN_IDENTIFICATION_NUMBER_LENGTH = 10
