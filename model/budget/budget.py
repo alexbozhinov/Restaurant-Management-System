@@ -19,7 +19,7 @@ class Budget:
         self.__profit = constants.UNDEFINED_CLASS_FIELD
 
     def get_total_balance(self):
-        return  self.__total_balance
+        return self.__total_balance
 
     def get_storage_outcomes(self):
         return self.__storage_outcomes

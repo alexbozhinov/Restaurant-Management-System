@@ -1,0 +1,13 @@
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+<MainWindow>
+    id: main_window
+
+    ScreenManager:
+        id: screen_manager_main
+        transition: NoTransition()
+        Screen:
+            id: screen_welcome
+            name: 'screen_welcome'
+        Screen:
+            id: screen_login
+            name: 'screen_login'
