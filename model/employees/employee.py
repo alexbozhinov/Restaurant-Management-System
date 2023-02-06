@@ -37,6 +37,9 @@ class Employee:
     def get_username(self):
         return self._username
 
+    def get_password(self):
+        return self._password
+
     def get_salary(self):
         return self._salary
 

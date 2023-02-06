@@ -51,7 +51,19 @@ class Chef(Employee, StorageManager):
     def finish_order(self):
         pass
 
+    def set_email(self, email):
+        self._email = email
+
+    def set_meals_cocked(self, meals_cocked):
+        self._meals_cocked = meals_cocked
+
+    def set_ingredient_orders_created(self, ingredient_orders_created):
+        self._ingredient_orders_created = ingredient_orders_created
+
+    def set_current_orders(self, current_orders):
+        self._current_orders = current_orders
+
 
 # manual tests
-c = Chef("Ivan Ivanov Ivanov", "1234567890")
-print(c)
+# c = Chef("Ivan Ivanov Ivanov", "1234567890")
+# print(c)
