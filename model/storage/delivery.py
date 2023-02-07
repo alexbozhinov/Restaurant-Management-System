@@ -14,6 +14,9 @@ class Delivery:
         self.__status = DeliveryStatus.UNDEFINED
         self.__delivery_time = None  # date and clock
 
+    """
+    Accessor methods:
+    """
     def get_query(self):
         return self.__query
 
@@ -23,5 +26,8 @@ class Delivery:
     def get_delivery_time(self):
         return self.__delivery_time
 
+    """
+    method purpose: update the current state of the delivery
+    """
     def update_status(self, new_status: DeliveryStatus):
         self.__status = new_status

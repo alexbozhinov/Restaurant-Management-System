@@ -17,9 +17,15 @@ class DrinkItem(RestaurantItem):
         super().__init__(name, quantity, measure, price)
         self.__drink_type = drink_type
 
+    """
+    Accessor methods:
+    """
     def get_drink_type(self):
         return self.__drink_type
 
+    """
+    Mutator methods:
+    """
     def set_drink_type(self, new_drink_type):
         self.__drink_type = new_drink_type
 

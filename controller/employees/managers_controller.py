@@ -18,7 +18,7 @@ class ManagersController:
     """
     def check_login(self, email, password):
         for manager in self.__managers:
-            if manager.get_email() == email and manager.get_password() == password:
+            if manager.get_email() == email and manager.is_valid_password(password):
                 return True
         return False
 

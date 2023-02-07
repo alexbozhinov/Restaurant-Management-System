@@ -24,6 +24,9 @@ class FoodItem(RestaurantItem):
         self.__recipe = constants.UNDEFINED_CLASS_FIELD
         self.__ingredients = []
 
+    """
+    Accessor methods:
+    """
     def get_type(self):
         return self.__food_type
 
@@ -36,6 +39,9 @@ class FoodItem(RestaurantItem):
     def get_ingredients(self):
         return self.__ingredients
 
+    """
+    Mutator methods:
+    """
     def set_type(self, new_type):
         self.__food_type = new_type
 

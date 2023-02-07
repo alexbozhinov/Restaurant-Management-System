@@ -18,6 +18,9 @@ class RestaurantItem:
         self._price = price
         # validate all set methods through project
 
+    """
+    Accessor methods:
+    """
     def get_name(self):
         return self._name
 
@@ -30,6 +33,9 @@ class RestaurantItem:
     def get_price(self):
         return self._price
 
+    """
+    Mutator methods:
+    """
     def set_name(self, new_name):
         self._name = new_name
 

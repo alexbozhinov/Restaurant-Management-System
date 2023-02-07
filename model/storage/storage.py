@@ -14,6 +14,9 @@ class Storage:
         self.__queries = []
         self.__deliveries = []
 
+    """
+    Accessor methods:
+    """
     def get_ingredients(self):
         return self.__ingredients
 

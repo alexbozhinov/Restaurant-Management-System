@@ -11,12 +11,18 @@ class Menu:
         self.__food_items = food_items
         self.__drink_items = drink_items
 
+    """
+    Accessor methods:
+    """
     def get_food_items(self):
         return self.__food_items
 
     def get_drink_items(self):
         return self.__drink_items
 
+    """
+    Mutator methods:
+    """
     def set_food_items(self, new_food_items):
         self.__food_items = new_food_items
 

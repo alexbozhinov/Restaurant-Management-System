@@ -8,6 +8,7 @@ purpose: creating and managing of database's table managers
 import sqlite3
 
 from database.employees.employees_db import EmployeesDB
+from model.employees.manager import Manager
 
 
 class ManagerDB(EmployeesDB):
@@ -25,7 +26,7 @@ class ManagerDB(EmployeesDB):
                 email TEXT,
                 username TEXT,
                 password TEXT,
-                salary DECIMAL)
+                salary TEXT)
             """)
 
         conn.commit()
@@ -53,9 +54,17 @@ class ManagerDB(EmployeesDB):
     """
     @staticmethod
     def initial_insert():
+
+        manager = Manager('Aleks Veselinov Bozhinov', '0043201515')
+        manager.set_password('00000')
+        manager.hash_password()
+        manager.set_salary('2500.00')
+
         all_managers = [
-            ('Aleks Veselinov Bozhinov', '0043201515', 'aleks_bozhinov@emp.com', 'abozhinov', '00000', '2500')
+            (manager.get_name(), manager.get_identification_number(), manager.get_email(),
+             manager.get_username(), manager.get_password(), str(manager.get_salary().get_value()))
         ]
+
         conn = sqlite3.connect('RMS.sqlite')
         c = conn.cursor()
 

@@ -76,14 +76,14 @@ class Employee:
         # Adding the salt to password
         salt = bcrypt.gensalt()
         # Hashing the password
-        hashed_password = bcrypt.hashpw(self._password, salt)
-        return hashed_password
+        hashed_password = bcrypt.hashpw(self._password.encode('utf-8'), salt)
+        self._password = hashed_password
 
     """
     method purpose: checks if inputted password is equal with the hashed password in the database
     """
     def is_valid_password(self, password):
-        if bcrypt.checkpw(password, self._password):
+        if bcrypt.checkpw(str(password).encode('utf-8'), self._password):
             return True
         return False
 

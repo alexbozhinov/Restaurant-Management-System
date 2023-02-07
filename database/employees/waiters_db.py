@@ -56,9 +56,9 @@ class WaiterDB(EmployeesDB):
     @staticmethod
     def initial_insert():
         all_waiters = [
-            ('Gergana Ivanova Petrova', '8504211485', 'gergana_prtrova@emp.com', 'gpetrova', '11111', '900', 5, 0),
+            ('Gergana Ivanova Petrova', '8504211485', 'gergana_petrova@emp.com', 'gpetrova', '11111', '900', 5, 0),
             ('Vasil Yordanov Draganov', '8108101414', 'vasil_draganov@emp.com', 'vdraganov', '33333', '1020', 7, 0),
-            ('Vesela Plamenova Yordanova', '9405211451', 'vesela_yordanova@emp.com', 'vyordanova', '66666', '920', 5, 0),
+            ('Vesela Plamenova Yordanova', '9405211451', 'vesela_yordanova@emp.com', 'vyordanova', '66666', '920', 5, 0)
         ]
         conn = sqlite3.connect('RMS.sqlite')
         c = conn.cursor()

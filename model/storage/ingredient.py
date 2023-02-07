@@ -15,6 +15,9 @@ class Ingredient:
         self.__quantity = quantity
         self.__market_price = market_price
 
+    """
+    Accessor methods:
+    """
     def get_name(self):
         return self.__name
 
@@ -27,8 +30,11 @@ class Ingredient:
     def get_market_price(self):
         return self.__market_price
 
-    def change_quantity(self, new_quantity):
+    """
+    Mutator methods:
+    """
+    def set_quantity(self, new_quantity):
         self.__quantity = new_quantity
 
-    def change_market_price(self, new_market_price: Money):
+    def set_market_price(self, new_market_price: Money):
         self.__market_price = new_market_price

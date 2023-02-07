@@ -28,5 +28,8 @@ class Query:
     def calculate_total_price(self):
         pass
 
+    """
+    method purpose: update the current status of the query
+    """
     def update_status(self, new_status: QueryStatus):
         self.__status = new_status
