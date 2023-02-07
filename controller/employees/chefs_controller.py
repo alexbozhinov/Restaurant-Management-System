@@ -40,5 +40,5 @@ class ChefsController:
             new_chef.set_current_orders(chef[9])
             self.__chefs.append(new_chef)
 
-    def get_employees(self):
+    def get_chefs(self):
         return self.__chefs

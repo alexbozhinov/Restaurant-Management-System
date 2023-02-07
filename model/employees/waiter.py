@@ -47,6 +47,12 @@ class Waiter(Employee):
     def print_receipt(self):
         pass
 
+    def set_number_of_tables(self, number_of_tables):
+        self._number_of_tables = number_of_tables
+
+    def set_number_of_orders(self, number_of_orders):
+        self._number_of_orders = number_of_orders
+
 
 # manual tests
 w = Waiter('Konstantin Ivanov Dimitrov', '5555566666')

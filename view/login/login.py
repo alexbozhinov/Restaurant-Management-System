@@ -11,6 +11,8 @@ from kivy.lang import Builder
 from kivy.uix.label import Label
 
 from controller.employees.chefs_controller import ChefsController
+from controller.employees.managers_controller import ManagersController
+from controller.employees.waiters_controller import WaitersController
 
 Builder.load_file('view/login/login.kv')
 
@@ -18,14 +20,17 @@ Builder.load_file('view/login/login.kv')
 class LoginWindow(Widget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.controller = ChefsController()
+        self.__employee_type = ''
+        self.chefs_controller = ChefsController()
+        self.waiters_controller = WaitersController()
+        self.managers_controller = ManagersController()
 
     def employee_type_spinner_clicked(self, value):
-        print(value)
+        self.__employee_type = value
     """
     method purpose: apply login via sending the inputted email and password to the controller for validation 
     """
-    def __apply_login(self):
+    def __apply_chef_login(self):
         email = self.ids.email_input.text
         password = self.ids.password_input.text
 
@@ -34,22 +39,87 @@ class LoginWindow(Widget):
             self.unfilled_data_popup()
         else:
             # if the inputted email and password exist in the database's table chefs
-            if self.controller.check_login(email, password):
+            if self.chefs_controller.check_login(email, password):
                 self.chef_successful_login()
             else:
                 self.chef_fail_login()
+    """
+    method purpose: apply login via sending the inputted email and password to the controller for validation 
+    """
+    def __apply_waiter_login(self):
+        email = self.ids.email_input.text
+        password = self.ids.password_input.text
+
+        # if textinput is not filled
+        if email == '' or password == '':
+            self.unfilled_data_popup()
+        else:
+            # if the inputted email and password exist in the database's table waiters
+            if self.waiters_controller.check_login(email, password):
+                self.waiter_successful_login()
+            else:
+                self.waiter_fail_login()
 
     """
-    method purpose: on successful login, move to next screen
+    method purpose: apply login via sending the inputted email and password to the controller for validation 
+    """
+    def __apply_manager_login(self):
+        email = self.ids.email_input.text
+        password = self.ids.password_input.text
+
+        # if textinput is not filled
+        if email == '' or password == '':
+            self.unfilled_data_popup()
+        else:
+            # if the inputted email and password exist in the database's table managers
+            if self.managers_controller.check_login(email, password):
+                self.manager_successful_login()
+            else:
+                self.manager_fail_login()
+
+    """
+    method purpose: on successful chef login, move to next screen
     """
     def chef_successful_login(self):
         print("Chef successful login")
         # next screen
 
     """
-    method purpose: on unsuccessful login, show popup saying there is an error
+    method purpose: on unsuccessful chef login, show popup saying there is an error
     """
     def chef_fail_login(self):
+        self.incorrect_data_popup()
+
+        # clear the text inputs
+        self.ids.email_input.text = ''
+        self.ids.password_input.text = ''
+    """
+    method purpose: on successful waiter login, move to next screen
+    """
+    def waiter_successful_login(self):
+        print("Waiter successful login")
+        # next screen
+
+    """
+    method purpose: on unsuccessful waiter login, show popup saying there is an error
+    """
+    def waiter_fail_login(self):
+        self.incorrect_data_popup()
+
+        # clear the text inputs
+        self.ids.email_input.text = ''
+        self.ids.password_input.text = ''
+    """
+    method purpose: on successful manager login, move to next screen
+    """
+    def manager_successful_login(self):
+        print("Manager successful login")
+        # next screen
+
+    """
+    method purpose: on unsuccessful manager login, show popup saying there is an error
+    """
+    def manager_fail_login(self):
         self.incorrect_data_popup()
 
         # clear the text inputs
@@ -60,7 +130,14 @@ class LoginWindow(Widget):
     method purpose: event on button LOGIN click
     """
     def login_click(self):
-        self.__apply_login()
+        if self.__employee_type == 'Manager':
+            self.__apply_manager_login()
+        elif self.__employee_type == 'Chef':
+            self.__apply_chef_login()
+        elif self.__employee_type == 'Waiter':
+            self.__apply_waiter_login()
+        else:
+            self.unselected_employee_type_popup()
 
     """
     method purpose: creating and showing popup window with error message when an input was not filled
@@ -86,6 +163,22 @@ class LoginWindow(Widget):
         popup = Popup(
             title='Login Error',
             content=Label(text='Incorrect email or password',
+                          font_size=20,
+                          color=(1, 0, 0, 1)),
+            size_hint=(None, None),
+            size=(300, 300),
+            separator_color=(255 / 255.0, 128 / 255.0, 0 / 255.0, 1)
+        )
+        popup.open()
+
+    """
+    method purpose: creating and showing popup window with error message when spinner employee type not selected
+    """
+    @staticmethod
+    def unselected_employee_type_popup():
+        popup = Popup(
+            title='Login Error',
+            content=Label(text='Select Position field required!',
                           font_size=20,
                           color=(1, 0, 0, 1)),
             size_hint=(None, None),

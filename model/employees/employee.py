@@ -55,6 +55,9 @@ class Employee:
     def set_password(self, password: str):
         self._password = password
 
+    def set_email(self, email):
+        self._email = email
+
     def set_salary(self, salary: str):
         self._salary = Money(salary)
 

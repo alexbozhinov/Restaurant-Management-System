@@ -51,9 +51,6 @@ class Chef(Employee, StorageManager):
     def finish_order(self):
         pass
 
-    def set_email(self, email):
-        self._email = email
-
     def set_meals_cocked(self, meals_cocked):
         self._meals_cocked = meals_cocked
 
