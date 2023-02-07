@@ -19,6 +19,9 @@ class LoginWindow(Widget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.controller = ChefsController()
+
+    def employee_type_spinner_clicked(self, value):
+        print(value)
     """
     method purpose: apply login via sending the inputted email and password to the controller for validation 
     """

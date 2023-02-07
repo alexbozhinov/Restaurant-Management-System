@@ -1,3 +1,11 @@
+#:import Factory kivy.factory.Factory
+
+<sp@SpinnerOption>
+    color: (137/255.0, 96/255.0, 0/255.0, 1)
+    background_normal: ''
+    background_color: (255/255.0, 253/255.0, 160/255.0, 1)
+    font_size: 25
+
 <LoginWindow>
     id: login_window
     BoxLayout:
@@ -5,13 +13,13 @@
         orientation: 'vertical'
         size: root.width, root.height
 
-        padding: 30
-        spacing: 20
+        padding: 20
+        spacing: 10
 
         BoxLayout:
             orientation: 'vertical'
-            spacing: 20
-            padding: 30
+            padding: 20
+            spacing: 10
 
             Label:
                 text: 'Access Control'
@@ -31,7 +39,7 @@
         BoxLayout:
             id: login_inputs_layout
             orientation: 'vertical'
-            padding: 30
+            padding: 20
             spacing: 10
 
             TextInput:
@@ -56,10 +64,21 @@
                 hint_text_color: (148/255.0, 129/255.0, 84/255.0, 1)
                 background_color: (255/255.0, 253/255.0, 223/255.0, 1)
                 on_text_validate: root.validate_user()
+            Spinner:
+                id: employee_type_spinner
+                text: 'Select Position'
+                background_normal: ''
+                background_color: (255/255.0, 253/255.0, 223/255.0, 1)
+                color: (137/255.0, 96/255.0, 0/255.0, 1)
+                font_size: 25
+                values: ['Manager', 'Chef', 'Waiter']
+                option_cls: Factory.sp
+
+                on_text: root.employee_type_spinner_clicked(employee_type_spinner.text)
         BoxLayout:
-            id: welcome_button_layout
+            id: login_button_layout
             orientation: 'vertical'
-            padding: 30
+            padding: 20
 
             RoundedButton:
                 id: login_button
