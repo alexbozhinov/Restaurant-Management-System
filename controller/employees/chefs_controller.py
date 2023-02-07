@@ -27,7 +27,7 @@ class ChefsController:
     method purpose: set list of all chefs from the database
     """
     def __set_chefs(self):
-        chefs = ChefDB.get_all()
+        chefs = ChefDB.read_all()
 
         for chef in chefs:
             new_chef = Chef(chef[0], chef[1], chef[6])  # 0: name, 1: identification_number, 6: chef_type

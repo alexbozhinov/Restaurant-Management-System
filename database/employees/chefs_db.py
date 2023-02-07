@@ -34,13 +34,12 @@ class ChefDB(EmployeesDB):
 
         conn.commit()
         conn.close()
-        # self.__initial_submit()
 
     """
     method purpose: get a list of all chefs from the database's table chefs
     """
     @staticmethod
-    def get_all():
+    def read_all():
         conn = sqlite3.connect('RMS.sqlite')
         c = conn.cursor()
 
@@ -55,10 +54,9 @@ class ChefDB(EmployeesDB):
     """
     method purpose: used one time for initial filling of database's table chefs
     """
-
     """
     @staticmethod
-    def __initial_submit():
+    def initial_insert():
         all_chefs = [
             ('Ivan Kamenov Ivanov', '8602131486', 'ivan_ivanov@emp.com', 'iivanov', '12345', '1062', 3, 0, 0, 0),
             ('Krasen Stefanov Ivanov', '8206181426', 'krasen_ivanov@emp.com', 'kivanov', '55555', '1230', 2, 0, 0, 0),

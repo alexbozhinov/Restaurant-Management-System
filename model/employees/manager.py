@@ -4,7 +4,6 @@ author: alexbozhinov
 created: 20.01.2023
 purpose: definition of class Manager, which inherits Employee, StorageManager and EmployeesManager
 """
-from model.employees.chef import Chef
 from model.employees.employee import Employee
 from model.management.budget_manager import BudgetManager
 from model.management.employees_manager import EmployeesManager

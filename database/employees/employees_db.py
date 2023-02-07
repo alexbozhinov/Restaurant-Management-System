@@ -15,11 +15,11 @@ class EmployeesDB:
         pass
 
     @staticmethod
-    def add():
+    def put():
         pass
 
     @staticmethod
-    def get():
+    def read():
         pass
 
     @staticmethod
@@ -27,5 +27,5 @@ class EmployeesDB:
         pass
 
     @staticmethod
-    def get_all():
+    def read_all():
         pass

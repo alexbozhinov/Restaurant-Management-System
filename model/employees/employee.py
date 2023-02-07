@@ -21,10 +21,13 @@ class Employee:
             self._identification_number = constants.UNDEFINED_CLASS_FIELD
 
         self._password = constants.UNDEFINED_CLASS_FIELD
-        self._username = constants.UNDEFINED_CLASS_FIELD
-        self._salary = Money()
+        self._username = self.__generate_username()
         self._email = self.__generate_email()
+        self._salary = Money()
 
+    """
+    Accessor methods:
+    """
     def get_name(self):
         return self._name
 
@@ -43,6 +46,9 @@ class Employee:
     def get_salary(self):
         return self._salary
 
+    """
+    Mutator methods:
+    """
     def set_username(self, username: str):
         self._username = username
 
@@ -52,11 +58,17 @@ class Employee:
     def set_salary(self, salary: str):
         self._salary = Money(salary)
 
+    """
+    method purpose: update salary by given percentage
+    """
     def update_salary(self, percentage: float):
         if percentage > Decimal(0.0) or percentage <= Decimal(100.0):
             new_salary = (self._salary.get_value() * percentage) / Decimal(100.0) + self._salary.get_value()
             self.set_salary(new_salary)
 
+    """
+    method purpose: hash password before putting it in the database table with bcrypt algorithm
+    """
     def hash_password(self):
         # Adding the salt to password
         salt = bcrypt.gensalt()
@@ -64,11 +76,32 @@ class Employee:
         hashed_password = bcrypt.hashpw(self._password, salt)
         return hashed_password
 
+    """
+    method purpose: checks if inputted password is equal with the hashed password in the database
+    """
+    def is_valid_password(self, password):
+        if bcrypt.checkpw(password, self._password):
+            return True
+        return False
+
+    """
+    method purpose: generating unique email of user, depending on their names and the short name of the restaurant
+    future TODO: validate if names of employees duplicated, the email should be unique
+    """
     def __generate_email(self):
         names = self._name.lower().split()
         return '{}_{}@{}.com'.format(names[0], names[-1], constants.SHORT_RESTAURANT_NAME)
+    """
+    method purpose: generating unique username of user, depending on their names
+    future TODO: validate if names of employees duplicated, the username should be unique; maximum length of username
+    """
+    def __generate_username(self):
+        names = self._name.lower().split()
+        return '{}{}'.format(names[0][0], names[-1])
 
-    # implemented for manual tests
+    """
+    method purpose: implemented for manual and simple unit tests
+    """
     def __str__(self):
         return 'Employee name: {}, idn: {}, usr: {}, psw: {}, email: {}'\
             .format(self._name, self._identification_number, self._username, self._password, self._email)
