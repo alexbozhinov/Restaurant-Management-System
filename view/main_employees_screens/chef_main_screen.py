@@ -12,7 +12,9 @@ Builder.load_file('view/main_employees_screens/chef_main_screen.kv')
 
 
 class ChefMainWindow(Widget):
-    def __init__(self, **kwargs):
+    def __init__(self, controller,  **kwargs):
+        self.controller = controller
+        self.logged_chef = None
         super().__init__(**kwargs)
 
     """
@@ -20,3 +22,7 @@ class ChefMainWindow(Widget):
     """
     def exit(self):
         self.parent.parent.current = 'screen_welcome'
+
+    def chef_entered(self):
+        self.ids.chef_name_label.text = self.controller.get_logged_chef().get_name()
+        self.logged_chef = self.controller.get_logged_chef()

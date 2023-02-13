@@ -14,9 +14,12 @@
         Screen:
             id: screen_chef_main
             name: 'screen_chef_main'
+            on_enter: root.chef_entered()
         Screen:
             id: screen_waiter_main
             name: 'screen_waiter_main'
+            on_enter: root.waiter_entered()
         Screen:
             id: screen_manager_main
             name: 'screen_manager_main'
+            on_enter: root.manager_entered()

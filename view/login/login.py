@@ -18,12 +18,19 @@ Builder.load_file('view/login/login.kv')
 
 
 class LoginWindow(Widget):
-    def __init__(self, **kwargs):
+    def __init__(self, chefs_controller, waiters_controller, managers_controller, **kwargs):
         super().__init__(**kwargs)
         self.__employee_type = ''
-        self.chefs_controller = ChefsController()
-        self.waiters_controller = WaitersController()
-        self.managers_controller = ManagersController()
+        self.logged_type = None
+        self.chefs_controller = chefs_controller
+        self.waiters_controller = waiters_controller
+        self.managers_controller = managers_controller
+
+    def get_employee_type(self):
+        return self.__employee_type
+
+    def get_logged_type(self):
+        return self.logged_type
 
     def employee_type_spinner_clicked(self, value):
         self.__employee_type = value
@@ -85,6 +92,7 @@ class LoginWindow(Widget):
         self.ids.email_input.text = ''
         self.ids.password_input.text = ''
         self.ids.employee_type_spinner.text = 'Select Position'
+        self.logged_type = 'Chef'
 
         self.parent.parent.current = 'screen_chef_main'
 
@@ -107,6 +115,7 @@ class LoginWindow(Widget):
         self.ids.email_input.text = ''
         self.ids.password_input.text = ''
         self.ids.employee_type_spinner.text = 'Select Position'
+        self.logged_type = 'Waiter'
 
         self.parent.parent.current = 'screen_waiter_main'
 
@@ -129,6 +138,7 @@ class LoginWindow(Widget):
         self.ids.email_input.text = ''
         self.ids.password_input.text = ''
         self.ids.employee_type_spinner.text = 'Select Position'
+        self.logged_type = 'Manager'
 
         self.parent.parent.current = 'screen_manager_main'
 

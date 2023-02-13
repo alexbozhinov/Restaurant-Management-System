@@ -13,13 +13,16 @@ class ChefsController:
     def __init__(self):
         self.__chefs = []  # stores all chefs from the database
         self.__set_chefs()
-
+        self.__logged_chef = None
+        self.__is_chef_logged = False
     """
     method purpose: check if imputed email and password in the login screen exist in the database
     """
     def check_login(self, email, password):
         for chef in self.__chefs:
             if chef.get_email() == email and chef.get_password() == password:
+                self.set_logged_chef(chef)
+                self.__is_chef_logged = True
                 return True
         return False
 
@@ -42,3 +45,12 @@ class ChefsController:
 
     def get_chefs(self):
         return self.__chefs
+
+    def set_logged_chef(self, chef):
+        self.__logged_chef = chef
+
+    def get_logged_chef(self):
+        return self.__logged_chef
+
+    def is_chef_logged(self):
+        return self.__is_chef_logged

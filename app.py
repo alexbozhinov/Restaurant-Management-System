@@ -10,6 +10,9 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 import constants
+from controller.employees.chefs_controller import ChefsController
+from controller.employees.managers_controller import ManagersController
+from controller.employees.waiters_controller import WaitersController
 from database.db import DB
 from view.login.login import LoginWindow
 from view.login.welcome import WelcomeWindow
@@ -29,11 +32,15 @@ The main window of the app, managed by kivy ScreenManager
 
 
 class MainWindow(BoxLayout):
+    chefs_controller = ChefsController()
+    waiters_controller = WaitersController()
+    managers_controller = ManagersController()
+
     welcome_screen = WelcomeWindow()
-    login_screen = LoginWindow()
-    chef_main_screen = ChefMainWindow()
-    waiter_main_screen = WaiterMainWindow()
-    manager_main_screen = ManagerMainWindow()
+    login_screen = LoginWindow(chefs_controller, waiters_controller, managers_controller)
+    chef_main_screen = ChefMainWindow(chefs_controller)
+    waiter_main_screen = WaiterMainWindow(waiters_controller)
+    manager_main_screen = ManagerMainWindow(managers_controller)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -42,6 +49,18 @@ class MainWindow(BoxLayout):
         self.ids.screen_chef_main.add_widget(self.chef_main_screen)
         self.ids.screen_waiter_main.add_widget(self.waiter_main_screen)
         self.ids.screen_manager_main.add_widget(self.manager_main_screen)
+
+    def chef_entered(self):
+        print('Chef entered')
+        self.chef_main_screen.chef_entered()
+
+    def waiter_entered(self):
+        print('Waiter entered')
+        self.waiter_main_screen.waiter_entered()
+
+    def manager_entered(self):
+        print('Manager entered')
+        self.manager_main_screen.manager_entered()
 
 
 """

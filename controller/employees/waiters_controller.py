@@ -13,6 +13,8 @@ class WaitersController:
     def __init__(self):
         self.__waiters = []  # stores all waiters from the database
         self.__set_waiters()
+        self.__logged_waiter = None
+        self.__is_waiter_logged = False
 
     """
     method purpose: check if imputed email and password in the login screen exist in the database
@@ -20,6 +22,8 @@ class WaitersController:
     def check_login(self, email, password):
         for waiter in self.__waiters:
             if waiter.get_email() == email and waiter.get_password() == password:
+                self.set_logged_waiter(waiter)
+                self.__is_waiter_logged = True
                 return True
         return False
 
@@ -41,3 +45,12 @@ class WaitersController:
 
     def get_waiters(self):
         return self.__waiters
+
+    def set_logged_waiter(self, waiter):
+        self.__logged_waiter = waiter
+
+    def get_logged_waiter(self):
+        return self.__logged_waiter
+
+    def is_waiter_logged(self):
+        return self.__is_waiter_logged
