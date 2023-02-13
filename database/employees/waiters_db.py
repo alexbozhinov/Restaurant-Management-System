@@ -49,6 +49,47 @@ class WaiterDB(EmployeesDB):
 
         return waiters
 
+    # to test:
+    @staticmethod
+    def put(waiter):
+        conn = sqlite3.connect('RMS.sqlite')
+        c = conn.cursor()
+
+        c.execute("INSERT INTO waiters VALUES("
+                  "waiter.get_name(),"
+                  "waiter.get_identification_number(),"
+                  "waiter.get_email(),"
+                  "waiter.get_username(),"
+                  "waiter.get_password(),"
+                  "waiter.get_salary(),"
+                  "waiter.get_number_of_tables(),"
+                  "waiter.get_number_of_orders()"
+                  ")")
+
+        conn.commit()
+        conn.close()
+
+    @staticmethod
+    def read(identification_number):
+        conn = sqlite3.connect('RMS.sqlite')
+        c = conn.cursor()
+
+        c.execute("SELECT * FROM waiters WHERE identification_number = {identification_number}")  # to check
+        waiter = c.fetchone()
+
+        conn.commit()
+        conn.close()
+
+        return waiter
+
+    @staticmethod
+    def update():
+        pass
+
+    @staticmethod
+    def delete():
+        pass
+
     """
     method purpose: used one time for initial filling of database's table waiters
     """

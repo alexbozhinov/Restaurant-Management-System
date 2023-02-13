@@ -1,0 +1,81 @@
+<ManagerMainWindow>
+    id: manager_main_window
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        padding: 20
+        spacing: 10
+
+        GridLayout:
+            cols: 2
+            padding: 10
+            canvas.before:
+                Color:
+                    rgba: (142/255.0, 87/255.0, 38/255.0, 1)
+                Rectangle:
+                    pos: 17, (root.height/6.6)*5.82
+                    size: (root.width-35, root.height/10)
+            row_default_height: 30
+            row_force_default: True
+            cols_minimum: {0: (root.width/5.0)*4, 1: root.width/5.0}
+            size_hint: 0, .10
+
+            Label:
+                id: manager_name_label
+                font_size: 23
+                halign: 'left'
+                valign: 'middle'
+                text: 'Ivan Ivanov Ivanov'
+            RoundedExitButton:
+                id: exit_button
+                font_size: 23
+                text: 'EXIT'
+                on_release: root.exit()
+
+        TabbedPanel:
+            id: manager_tabbed_panel
+            do_default_tab: False
+            background_normal: ''
+            background_down: ''
+            background_color: (255/255.0, 253/255.0, 223/255.0, 1)
+
+            TabbedPanelItemMain:
+                text: 'PROFILE'
+            TabbedPanelItemMain:
+                text: 'STAFF'
+            TabbedPanelItemMain:
+                text: 'MENU'
+            TabbedPanelItemMain:
+                text: 'STORAGE'
+            TabbedPanelItemMain:
+                text: 'SALON'
+            TabbedPanelItemMain:
+                text: 'KITCHEN'
+            TabbedPanelItemMain:
+                text: 'BUDGET'
+
+
+
+<TabbedPanelItemMain@TabbedPanelItem>
+    background_normal: ''
+    background_down: ''
+    background_color: (255/255.0, 205/255.0, 0/255.0, 1) if self.state == 'normal' else (255/255.0, 128/255.0, 0/255.0, 1)
+
+
+
+<RoundedExitButton@Button>
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    size_hint: None, None
+    width: self.texture_size[0] + dp(10)
+    height: self.texture_size[1] + dp(10)
+
+    canvas.before:
+        Color:
+            rgba: (255/255.0, 205/255.0, 0/255.0, 1) if self.state == 'normal' else (255/255.0, 128/255.0, 0/255.0, 1)
+
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [58]

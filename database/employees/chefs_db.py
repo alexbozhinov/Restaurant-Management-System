@@ -51,6 +51,49 @@ class ChefDB(EmployeesDB):
 
         return chefs
 
+    # to test:
+    @staticmethod
+    def put(chef):
+        conn = sqlite3.connect('RMS.sqlite')
+        c = conn.cursor()
+
+        c.execute("INSERT INTO chefs VALUES("
+                  "chef.get_name(),"
+                  "chef.get_identification_number(),"
+                  "chef.get_email(),"
+                  "chef.get_username(),"
+                  "chef.get_password(),"
+                  "chef.get_salary(),"
+                  "chef.get_chef_type(),"
+                  "chef.get_meals_cocked(),"
+                  "chef.get_ingredient_orders_created,"
+                  "chef.get_current_orders() "
+                  ")")
+
+        conn.commit()
+        conn.close()
+
+    @staticmethod
+    def read(identification_number):
+        conn = sqlite3.connect('RMS.sqlite')
+        c = conn.cursor()
+
+        c.execute("SELECT * FROM chefs WHERE identification_number = {identification_number}")  # to check
+        chef = c.fetchone()
+
+        conn.commit()
+        conn.close()
+
+        return chef
+
+    @staticmethod
+    def update():
+        pass
+
+    @staticmethod
+    def delete():
+        pass
+
     """
     method purpose: used one time for initial filling of database's table chefs
     """

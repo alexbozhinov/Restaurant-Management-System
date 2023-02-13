@@ -82,7 +82,11 @@ class LoginWindow(Widget):
     """
     def chef_successful_login(self):
         print("Chef successful login")
-        # next screen
+        self.ids.email_input.text = ''
+        self.ids.password_input.text = ''
+        self.ids.employee_type_spinner.text = 'Select Position'
+
+        self.parent.parent.current = 'screen_chef_main'
 
     """
     method purpose: on unsuccessful chef login, show popup saying there is an error
@@ -93,12 +97,18 @@ class LoginWindow(Widget):
         # clear the text inputs
         self.ids.email_input.text = ''
         self.ids.password_input.text = ''
+        self.ids.employee_type_spinner.text = 'Select Position'
+
     """
     method purpose: on successful waiter login, move to next screen
     """
     def waiter_successful_login(self):
         print("Waiter successful login")
-        # next screen
+        self.ids.email_input.text = ''
+        self.ids.password_input.text = ''
+        self.ids.employee_type_spinner.text = 'Select Position'
+
+        self.parent.parent.current = 'screen_waiter_main'
 
     """
     method purpose: on unsuccessful waiter login, show popup saying there is an error
@@ -109,12 +119,18 @@ class LoginWindow(Widget):
         # clear the text inputs
         self.ids.email_input.text = ''
         self.ids.password_input.text = ''
+        self.ids.employee_type_spinner.text = 'Select Position'
+
     """
     method purpose: on successful manager login, move to next screen
     """
     def manager_successful_login(self):
         print("Manager successful login")
-        # next screen
+        self.ids.email_input.text = ''
+        self.ids.password_input.text = ''
+        self.ids.employee_type_spinner.text = 'Select Position'
+
+        self.parent.parent.current = 'screen_manager_main'
 
     """
     method purpose: on unsuccessful manager login, show popup saying there is an error
@@ -125,6 +141,7 @@ class LoginWindow(Widget):
         # clear the text inputs
         self.ids.email_input.text = ''
         self.ids.password_input.text = ''
+        self.ids.employee_type_spinner.text = 'Select Position'
 
     """
     method purpose: event on button LOGIN click

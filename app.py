@@ -13,6 +13,9 @@ import constants
 from database.db import DB
 from view.login.login import LoginWindow
 from view.login.welcome import WelcomeWindow
+from view.main_employees_screens.chef_main_screen import ChefMainWindow
+from view.main_employees_screens.manager_main_screen import ManagerMainWindow
+from view.main_employees_screens.waiter_main_screen import WaiterMainWindow
 
 Builder.load_file('app.kv')
 
@@ -28,11 +31,17 @@ The main window of the app, managed by kivy ScreenManager
 class MainWindow(BoxLayout):
     welcome_screen = WelcomeWindow()
     login_screen = LoginWindow()
+    chef_main_screen = ChefMainWindow()
+    waiter_main_screen = WaiterMainWindow()
+    manager_main_screen = ManagerMainWindow()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.ids.screen_welcome.add_widget(self.welcome_screen)
         self.ids.screen_login.add_widget(self.login_screen)
+        self.ids.screen_chef_main.add_widget(self.chef_main_screen)
+        self.ids.screen_waiter_main.add_widget(self.waiter_main_screen)
+        self.ids.screen_manager_main.add_widget(self.manager_main_screen)
 
 
 """

@@ -2,7 +2,7 @@
 filename: constants.py
 author: alexbozhinov
 created: 18.01.2023
-purpose: definition of constant values for the RMS project
+purpose: definition of constant values for the RMS project, future to be set by the ADMIN
 """
 
 # a constant to set instant values for class member variables

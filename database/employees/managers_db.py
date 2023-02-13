@@ -48,6 +48,45 @@ class ManagerDB(EmployeesDB):
 
         return managers
 
+    # to test:
+    @staticmethod
+    def put(manager):
+        conn = sqlite3.connect('RMS.sqlite')
+        c = conn.cursor()
+
+        c.execute("INSERT INTO managers VALUES("
+                  "manager.get_name(),"
+                  "manager.get_identification_number(),"
+                  "manager.get_email(),"
+                  "manager.get_username(),"
+                  "manager.get_password(),"
+                  "manager.get_salary()"
+                  ")")
+
+        conn.commit()
+        conn.close()
+
+    @staticmethod
+    def read(identification_number):
+        conn = sqlite3.connect('RMS.sqlite')
+        c = conn.cursor()
+
+        c.execute("SELECT * FROM managers WHERE identification_number = {identification_number}")  # to check
+        manager = c.fetchone()
+
+        conn.commit()
+        conn.close()
+
+        return manager
+
+    @staticmethod
+    def update():
+        pass
+
+    @staticmethod
+    def delete():
+        pass
+
     """
     method purpose: used one time for initial filling of database's table managers
     """

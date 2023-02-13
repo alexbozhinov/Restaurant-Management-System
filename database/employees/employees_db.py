@@ -15,11 +15,11 @@ class EmployeesDB:
         pass
 
     @staticmethod
-    def put():
+    def put(employee):
         pass
 
     @staticmethod
-    def read():
+    def read(identification_number):
         pass
 
     @staticmethod
