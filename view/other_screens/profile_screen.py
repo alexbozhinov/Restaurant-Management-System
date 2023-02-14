@@ -6,9 +6,10 @@ from kivy.uix.button import Button
 
 class ProfileWindow(Widget):
     def __init__(self, **kwargs):
-        # if other types logged???
+        self.logged_employee = None
         self.salary_showed = False
         self.change_password_showed = False
+
         self.empty_label_1 = Label(text='')
         self.current_password_label = Label(
             text='Current password: ',
@@ -48,14 +49,16 @@ class ProfileWindow(Widget):
         super().__init__(**kwargs)
 
     def salary_button_press(self):
+        self.set_logged_employee()
         if not self.salary_showed:
             self.salary_showed = True
-            self.ids.salary_label.text = str(self.parent.parent.parent.parent.logged_manager.get_salary().get_money())
+            self.ids.salary_label.text = str(self.logged_employee.get_salary().get_money())
         else:
             self.salary_showed = False
             self.ids.salary_label.text = ''
 
     def change_password_button_clicked(self):
+        self.set_logged_employee()
         if not self.change_password_showed:
             self.change_password_showed = True
             self.ids.salary_password_layout.remove_widget(self.ids.empty_label_2)
@@ -87,3 +90,10 @@ class ProfileWindow(Widget):
             self.ids.salary_password_layout.remove_widget(self.new_password_input)
             self.ids.salary_password_layout.remove_widget(self.save_changes_button)
 
+    def set_logged_employee(self):
+        if hasattr(self.parent.parent.parent.parent, 'logged_manager'):
+            self.logged_employee = self.parent.parent.parent.parent.logged_manager
+        elif hasattr(self.parent.parent.parent.parent, 'logged_chef'):
+            self.logged_employee = self.parent.parent.parent.parent.logged_chef
+        elif hasattr(self.parent.parent.parent.parent, 'logged_waiter'):
+            self.logged_employee = self.parent.parent.parent.parent.logged_waiter

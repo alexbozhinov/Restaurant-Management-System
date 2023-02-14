@@ -28,5 +28,18 @@ class ManagerMainWindow(Widget):
         self.parent.parent.current = 'screen_welcome'
 
     def manager_entered(self):
+        # load image also
+
         self.ids.manager_name_label.text += self.controller.get_logged_manager().get_name()
         self.logged_manager = self.controller.get_logged_manager()
+
+        self.children[0].children[0].children[0].children[0].logged_employee = self.logged_manager
+
+        self.children[0].children[0].children[0].children[0].children[0].children[1].children[3].text +=\
+            '{}'.format(self.logged_manager.get_name())
+        self.children[0].children[0].children[0].children[0].children[0].children[1].children[2].text +=\
+            'Manager'
+        self.children[0].children[0].children[0].children[0].children[0].children[1].children[1].text +=\
+            '{}'.format(self.logged_manager.get_username())
+        self.children[0].children[0].children[0].children[0].children[0].children[1].children[0].text +=\
+            '{}'.format(self.logged_manager.get_email())
