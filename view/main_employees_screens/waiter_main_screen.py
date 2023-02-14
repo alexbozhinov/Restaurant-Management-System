@@ -24,8 +24,9 @@ class WaiterMainWindow(Widget):
     method purpose: go back to the welcome window of the app 
     """
     def exit(self):
+        self.logged_waiter = None
         self.parent.parent.current = 'screen_welcome'
 
     def waiter_entered(self):
-        self.ids.waiter_name_label.text = self.controller.get_logged_waiter().get_name()
+        self.ids.waiter_name_label.text += self.controller.get_logged_waiter().get_name()
         self.logged_waiter = self.controller.get_logged_waiter()

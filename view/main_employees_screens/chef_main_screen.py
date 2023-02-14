@@ -21,8 +21,9 @@ class ChefMainWindow(Widget):
     method purpose: go back to the welcome window of the app 
     """
     def exit(self):
+        self.logged_chef = None
         self.parent.parent.current = 'screen_welcome'
 
     def chef_entered(self):
-        self.ids.chef_name_label.text = self.controller.get_logged_chef().get_name()
+        self.ids.chef_name_label.text += self.controller.get_logged_chef().get_name()
         self.logged_chef = self.controller.get_logged_chef()

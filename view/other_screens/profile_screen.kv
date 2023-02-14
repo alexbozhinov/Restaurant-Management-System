@@ -1,0 +1,90 @@
+<ProfileWindow@BoxLayout>:
+    GridLayout:
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (255/255.0, 253/255.0, 223/255.0, 1)
+            Rectangle:
+                pos: (20, 10)
+                size: (self.size[0], self.size[1]+20)
+        cols: 2
+        GridLayout:
+            id: personal_data_layout
+            cols: 1
+            padding: 10
+            Image:
+                source: 'C:/PthonCourse/RMS/view/images/RMS_Aleks_Bozhinov_profile_image.jpg'
+                allow_stretch: True
+                keep_ratio: True
+                size_hint: 1, .5
+            ProfileLabel:
+                size_hint: 1, .06
+                halign: 'left'
+                text_size: (self.size[0]-20, self.size[1])
+                text: '  Name: Aleks Veselinov Bozhinov'
+            ProfileLabel:
+                size_hint: 1, .06
+                halign: 'left'
+                text_size: (self.size[0]-20, self.size[1]-10)
+                text: '  Position: Manager'
+            ProfileLabel:
+                size_hint: 1, .06
+                halign: 'left'
+                text_size: (self.size[0]-20, self.size[1]-10)
+                text: '  Username: abozhinov'
+            ProfileLabel:
+                size_hint: 1, .06
+                halign: 'left'
+                text_size: (self.size[0]-20, self.size[1]-10)
+                text: '  Email: aleks_bozhinov@emp.com'
+
+        GridLayout:
+            id: salary_password_layout
+            cols: 2
+            padding: (10, 10, 20, 20)
+            spacing: 10
+            ProfileButton:
+                id: salary_button
+                text: 'Check Salary'
+                background_normal: ''
+                background_color: (255/255.0, 205/255.0, 0/255.0, 1) if self.state == 'normal' else (255/255.0, 128/255.0, 0/255.0, 1)
+                on_press: root.salary_button_press()
+            ProfileLabel:
+                id: salary_label
+                text: ''
+            ProfileButton:
+                id: change_password_button
+                text: 'Change Password'
+                on_release: root.change_password_button_clicked()
+            Label:
+                id: empty_label_1
+                text: ''
+            Label:
+                id: empty_label_2
+                text: ''
+            Label:
+                id: empty_label_3
+                text: ''
+            Label:
+                id: empty_label_4
+                text: ''
+            Label:
+                id: empty_label_5
+                text: ''
+            Label:
+                id: empty_label_6
+                text: ''
+            Label:
+                id: empty_label_7
+                text: ''
+            Label:
+                id: empty_label_8
+                text: ''
+
+<ProfileLabel@Label>
+    color: (137/255.0, 96/255.0, 0/255.0, 1)
+    font_size: 20
+
+<ProfileButton@Button>
+    background_normal: ''
+    background_color: (255/255.0, 205/255.0, 0/255.0, 1)

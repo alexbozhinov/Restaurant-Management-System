@@ -1,3 +1,4 @@
+#:include view/other_screens/profile_screen.kv
 <ManagerMainWindow>
     id: manager_main_window
     BoxLayout:
@@ -26,7 +27,7 @@
                 font_size: 23
                 halign: 'left'
                 valign: 'middle'
-                text: 'Ivan Ivanov Ivanov'
+                text: 'Manager: '
             RoundedExitButton:
                 id: exit_button
                 font_size: 23
@@ -36,12 +37,18 @@
         TabbedPanel:
             id: manager_tabbed_panel
             do_default_tab: False
+            canvas.before:
+                Color:
+                    rgba: (255/255.0, 253/255.0, 223/255.0, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
             background_normal: ''
-            background_down: ''
             background_color: (255/255.0, 253/255.0, 223/255.0, 1)
 
             TabbedPanelItemMain:
                 text: 'PROFILE'
+                ProfileWindow:
             TabbedPanelItemMain:
                 text: 'STAFF'
             TabbedPanelItemMain:
